@@ -152,6 +152,10 @@
     * Prototype is often an alternative to Abstract Factory
 * Some patterns result in similar designs even though the patterns have different intents
     * Composite & Decorator have similar structure diagrams
+* Another way to organize design patterns is according to how they reference each other in their "related patterns" sections
+
+![Design Pattern Relationships](design_pattern_relationships.png)
+
 ### How design patterns solve design problems
 #### Finding appropriate objects
 * Hard part about object oriented design is decomposing a system into objects due to many factors:
