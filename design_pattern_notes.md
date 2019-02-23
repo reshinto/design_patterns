@@ -486,7 +486,31 @@
         * this is opposite of focusing on cause of redesign
         * consider what you want to be able to change without redesign, instead of what might force a change to a design
             * the foucs is on encapsulating the concept that varies
-    * | Purpose    | Design Pattern   | Aspect(s) that can vary     |
-      | ---------- | ---------------- | --------------------------- |
-      | Creational | Abstract Factory | families of product objects |
+| Purpose    | Design Pattern          | Aspect(s) that can vary                                                                  |
+| ---------- | ----------------------- | ---------------------------------------------------------------------------------------- |
+| Creational | Abstract Factory        | families of product objects                                                              |
+|            | Builder                 | how a composite object gets created                                                      |
+|            | Factory Method          | subclass of object that is instantiated                                                  |
+|            | Prototype               | class of object that is instantiated                                                     |
+|            | Singleton               | the sole instance of a class                                                             |
+| ---------- | ----------------------- | ---------------------------------------------------------------------------------------- |
+| Structural | Adapter                 | interface to an object                                                                   |
+|            | Bridge                  | implementation to an object                                                              |
+|            | Composite               | structure and composition of an object                                                   |
+|            | Decorator               | responsibilities of an object without subclassing                                        |
+|            | Facade                  | interface to a subsystem                                                                 |
+|            | Flyweight               | storage costs of objects                                                                 |
+|            | Proxy                   | how an object is accessed; its location                                                  |
+| ---------- | ----------------------- | ---------------------------------------------------------------------------------------- |
+| Behavioral | Chain of Responsibility | object that can fulfill a request                                                        |
+|            | Command                 | when and how a request is fulfilled                                                      |
+|            | Interpreter             | grammar and interpretation of a language                                                 |
+|            | Iterator                | how an aggregate's elements are accessed, traversed                                      |
+|            | Mediator                | how and which objects interact with each other                                           |
+|            | Memento                 | what private information is stored outside an object, and when                           |
+|            | Observer                | No. of objects that depend on another object; how the dependent objects staty up to date |
+|            | State                   | states of an object                                                                      |
+|            | Strategy                | an algorithm                                                                             |
+|            | Template Method         | steps of an algorithm                                                                    |
+|            | Visitor                 | operations that can be applied to object(S) without changing their class(es)             |
 ### How to use a Design Pattern
