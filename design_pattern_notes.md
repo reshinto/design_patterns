@@ -486,7 +486,7 @@
         * this is opposite of focusing on cause of redesign
         * consider what you want to be able to change without redesign, instead of what might force a change to a design
             * the foucs is on encapsulating the concept that varies
-| Purpose    | Design Pattern   | Aspect(s) that can vary     |
-| ---------- | ---------------- | --------------------------- |
-| Creational | Abstract Factory | families of product objects |
+    * | Purpose    | Design Pattern   | Aspect(s) that can vary     |
+      | ---------- | ---------------- | --------------------------- |
+      | Creational | Abstract Factory | families of product objects |
 ### How to use a Design Pattern
