@@ -511,9 +511,26 @@
 |            | Iterator                | how an aggregate's elements are accessed, traversed                                      |
 |            | Mediator                | how and which objects interact with each other                                           |
 |            | Memento                 | what private information is stored outside an object, and when                           |
-|            | Observer                | No. of objects that depend on another object; how the dependent objects staty up to date |
+|            | Observer                | No. of objects that depend on another object; how the dependent objects stay up to date  |
 |            | State                   | states of an object                                                                      |
 |            | Strategy                | an algorithm                                                                             |
 |            | Template Method         | steps of an algorithm                                                                    |
 |            | Visitor                 | operations that can be applied to object(S) without changing their class(es)             |
 ### How to use a Design Pattern
+1. Read the pattern once through for an overview
+    * pay attention to the Applicability & Consequences section to ensure the pattern is right for the problem
+2. Go back & study the Structure, Participants, & Collaborations sections
+    * make sure to understand the classes & objects in the pattern & how they related to each other
+3. Look at the Sample Code section to see a concrete example of the pattern in code
+4. Choose names for pattern participants that are meaningful in the application context
+5. Define the classes
+    * declare their interfaces,
+    * establish their inheritance relationships,
+    * define the instanace variable that represents data & object references
+    * identify existing classes in app that pattern will affect, and modify accordingly
+6. Define application specific names for operations in the pattern
+    * use the responsibilities & collaboration associated with each operation as a guide
+7. Implement the operations to carry out the responsibilities & collaborations in the pattern
+* Design patterns should not be applied indiscriminately
+* It can complicate design & or cost performance to achieve flexibility & variability by introducing additional levels of indirection
+* Design patterns should only be applied when the flexibility is really needed
