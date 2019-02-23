@@ -493,7 +493,6 @@
 |            | Factory Method          | subclass of object that is instantiated                                                  |
 |            | Prototype               | class of object that is instantiated                                                     |
 |            | Singleton               | the sole instance of a class                                                             |
-| ---------- | ----------------------- | ---------------------------------------------------------------------------------------- |
 | Structural | Adapter                 | interface to an object                                                                   |
 |            | Bridge                  | implementation to an object                                                              |
 |            | Composite               | structure and composition of an object                                                   |
@@ -501,7 +500,6 @@
 |            | Facade                  | interface to a subsystem                                                                 |
 |            | Flyweight               | storage costs of objects                                                                 |
 |            | Proxy                   | how an object is accessed; its location                                                  |
-| ---------- | ----------------------- | ---------------------------------------------------------------------------------------- |
 | Behavioral | Chain of Responsibility | object that can fulfill a request                                                        |
 |            | Command                 | when and how a request is fulfilled                                                      |
 |            | Interpreter             | grammar and interpretation of a language                                                 |
