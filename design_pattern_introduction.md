@@ -83,6 +83,10 @@
                 * Builder
                 * Prototype
                 * Singleton
+            * When to use:
+               * When the system should be independent of how its objects and products are created
+               * A set of related objects is designed to be used together
+               * Hiding the implementation of a product and only revealing its interface
         2. Structural: Deal with the composition of classes or objects
             * Class: Use inheritance to compose classes
                 * Adapter
