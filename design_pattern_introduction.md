@@ -158,7 +158,7 @@
     * Composite & Decorator have similar structure diagrams
 * Another way to organize design patterns is according to how they reference each other in their "related patterns" sections
 
-![Design Pattern Relationships](design_pattern_relationships.png)
+![Design Pattern Relationships](images/design_pattern_relationships.png)
 
 ### How design patterns solve design problems
 #### Finding appropriate objects
