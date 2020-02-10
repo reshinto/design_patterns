@@ -3,6 +3,7 @@ Single Responsibility Principle
 
 - A good advice on how to build systems
 - it specifies that any particular class should have just a single reaosn to change
+- the whole point of this principle is that a typical class is responsible for 1 thing and has 1 reason to change
 */
 using System;
 using System.Collections.Generic;
