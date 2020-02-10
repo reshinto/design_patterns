@@ -29,6 +29,7 @@ public class Journal {
   }
 
   /*
+  // breaks single responsibility principle
   public void Save(string filename) {
     File.WriteAllText(filename, ToString());
   }
