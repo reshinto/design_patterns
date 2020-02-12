@@ -39,6 +39,7 @@ public class Product {
 }
 
 // filter products on website
+// NOT a good filter, do not use this class
 public class ProductFilter {
   public IEnumerable<Product> FilterBySize(IEnumerable<Product> products, Size size) {
     foreach (var p in products) {
