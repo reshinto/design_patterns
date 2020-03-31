@@ -244,7 +244,7 @@ internal class Program
 }
 ```
   * 1 way to get to get fluent interfaces to inherit is to use recursive generics approach
-    * eg. class Foo : Bar<Foo>
+    * eg. class Foo : Bar\<Foo\>
 ```c#
 using System;
 using System.Collections.Generic;
