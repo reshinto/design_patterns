@@ -193,9 +193,9 @@ public class Program {
   }
 }
 ```
-* Fluent Builder inheritance with recursive generics
-  * builders inherit from other builders
-    * will be problematic if used fluent interface approach
+## Fluent Builder inheritance with recursive generics
+* builders inherit from other builders
+  * will be problematic if used fluent interface approach
 ```c#
 using System;
 using System.Collections.Generic;
@@ -243,8 +243,8 @@ internal class Program
   }
 }
 ```
-      * 1 way to get to get fluent interfaces to inherit is to use recursive generics approach
-        * eg. class Foo : Bar<Foo>
+  * 1 way to get to get fluent interfaces to inherit is to use recursive generics approach
+    * eg. class Foo : Bar<Foo>
 ```c#
 using System;
 using System.Collections.Generic;
@@ -314,5 +314,5 @@ internal class Program
   }
 }
 ```
-* Functional Builder
-* Faceted Builder
+## Functional Builder
+## Faceted Builder
