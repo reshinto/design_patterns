@@ -194,5 +194,125 @@ public class Program {
 }
 ```
 * Fluent Builder inheritance with recursive generics
+  * builders inherit from other builders
+    * will be problematic if used fluent interface approach
+```c#
+using System;
+using System.Collections.Generic;
+
+public class Person
+{
+  public string Name;
+  public string Position;
+  public override string ToString()
+  {
+    return $"{nameof(Name)}: {Name}, {nameof(Position)}: {Position}";
+  }
+}
+
+public class PersonInfoBuilder
+{
+  protected Person person = new Person();
+  public PersonInfoBuilder Called(string name)
+  {
+    person.Name = name;
+    return this;
+  }
+}
+
+public class PersonJobBuilder : PersonInfoBuilder
+{
+  public PersonJobBuilder WorksAsA(string position)
+  {
+    person.Position = position;
+    return this;
+  }
+}
+
+internal class Program
+{
+  public static void Main(string[] args)
+  {
+    var builder = new PersonJobBuilder();
+    builder.Called("Terence").WorkAsA  // can't call WorkAsA method
+    // The reason why it's not working is because when you call the Called method, you return a PersonInfoBuilder
+    // PersonInfoBuilder doesn't know anything about WorkAsA method because it's not part of its inheritance hierarchy
+    // PersonInfoBuilder just gives you an interface to the PersonInfoBuilder
+    // Therefore the problem with inheritance of fluid interfaces is that you are not allowed to use the containing type as the return type
+    // This makes no sense because if you were to do this, eventually as soon as someone calls the Called method, you are degrading your builder from a PersonJobBuilder to a PersonInfoBuilder
+  }
+}
+```
+      * 1 way to get to get fluent interfaces to inherit is to use recursive generics approach
+        * eg. class Foo : Bar<Foo>
+```c#
+using System;
+using System.Collections.Generic;
+
+public class Person
+{
+  public string Name;
+  public string Position;
+
+  // use to expose own builder
+  // can try to prevent accessibility from outside, but is difficult to control effectively
+  // therefore, can make the builder internally and give it an internal constructor
+  // but cannot make it private as it is already being exposed through the api
+  public class Builder : PersonJobBuilder<Builder>
+  {
+  }
+
+  // whenever a new person is constructed, a new builder will be given
+  public static Builder New => new Builder();
+
+  public override string ToString()
+  {
+    return $"{nameof(Name)}: {Name}, {nameof(Position)}: {Position}";
+  }
+}
+
+public abstract class PersonBuilder
+{
+  protected Person person = new Person();
+
+  public Person Build()
+  {
+    return person;
+  }
+}
+
+// class Foo : Bar<Foo>
+public class PersonInfoBuilder<SELF>
+  : PersonBuilder
+  where SELF : PersonInfoBuilder<SELF>  // this is used to restrict SELF, and not int, string, etc.
+{
+  public SELF Called(string name)
+  {
+    person.Name = name;
+    return (SELF) this;  // need to cast (SELF) to work
+  }
+}
+
+// this class cannot be initialized directly as there will be type issue at SELF (eg. new PersonJobBuilder<???>)
+public class PersonJobBuilder<SELF>
+  : PersonInfoBuilder<PersonJobBuilder<SELF>>
+  where SELF : PersonJobBuilder<SELF>  // this is used to restrict SELF, and not int, string, etc.
+{
+  public SELF WorksAsA(string position)
+  {
+    person.Position = position;
+    return (SELF) this;  // need to cast (SELF) to work
+  }
+}
+
+internal class Program
+{
+  public static void Main(string[] args)
+  {
+    var me = Person.New.Called("Terence").WorksAsA("software engineer").Build();
+    Console.WriteLine(me);  // Name: Terence, Position: software engineer
+  }
+}
+```
 * Functional Builder
 * Faceted Builder
