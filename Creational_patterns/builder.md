@@ -315,4 +315,61 @@ internal class Program
 }
 ```
 ## Functional Builder
+* functional programming style
+```c#
+using System;
+using System.Collections.Generic;
+
+public class Person
+{
+  public string Name, Position;
+}
+
+public class PersonBuilder
+{
+  private string Name, Position;
+
+  public readonly List<Action<Person>> Actions =
+    new List<Action<Person>>();
+
+  public PersonBuilder Called(string name)
+  {
+    Actions.Add(p => { p.Name = name; });
+    return this;
+  }
+
+  public Person Build()
+  {
+    var p = new Person();
+    Actions.ForEach(a => a(p));
+    Name = p.Name;
+    Position = p.Position;
+    return p;
+  }
+
+  public override string ToString()
+  {
+    return $"{nameof(Name)}: {Name}, {nameof(Position)}: {Position}";
+  }
+}
+
+public static class PersonBuilderExtensions
+{
+  public static PersonBuilder WorkAsA(this PersonBuilder builder, string position)
+  {
+    builder.Actions.Add(p => { p.Position = position; });
+    return builder;
+  }
+}
+
+class Program
+{
+  public static void Main(string[] args)
+  {
+    var pb = new PersonBuilder();
+    pb.Called("Terence").WorkAsA("software engineer").Build();
+    Console.WriteLine(pb);  // Name: Terence, Position: software engineer
+  }
+}
+```
 ## Faceted Builder
