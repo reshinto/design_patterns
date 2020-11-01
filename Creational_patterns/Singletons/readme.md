@@ -1,6 +1,13 @@
 # Singletons
 - Objects that can only have a single instance, with a single point of access
-- Useful for maintaining a central state, where all clients need to access and operate on a common resource
+- It is a global variable in an object-oriented way
+- Why use it?
+  - Useful for maintaining a central state, where all clients need to access and operate on a common resource
+  - It can be used to cache information
+    - so as to be shared by various elements of the software system
+    - by keeping the information in a single object
+      - it is not longer required to retrieve the infromation from its original source every time
+      - in this case, singleton acts as a cache of the information
 ## Javascript
 ### The Node.js module system provides a basic framework for implementing a rudimentary singleton
 ```javascript
@@ -19,3 +26,54 @@ module.exports = {
 - Normal way of exporting and importing Singletons defined with ES6 class with not behave like a singleton
   - as they do not share the same point of access
 - Need to create an instance and export the instance to make it behave like a singleton
+## Python
+- Python modules are singletons
+  - but it is not a good idea to use them for the Singleton pattern
+    - because it is error-prone
+      - e.g.: if you forget the global statements, variables local to a function will be created instead
+    - they pollute the module namespace
+    - no oop benefits like associated methods or reuse through inheritance
+### Singleton pattern
+- Ensures that a class has only 1 instance
+- provide a global point of access to it
+  - e.g. a logging class
+- Pros
+  - Singletons are allocated once and only once
+  - Policies can be added to the method that provides access to the singleton pointer
+- Cons
+  - Derivatives of Singletons are not automatically Singletons
+  - Singletons must always be accessed through a pointer or reference
+    - obtaining this has overhead
+#### uses __new__ method
+- is the first step of instance creation
+- is called before __init__
+  - is responsible for returning a new instance of the class
+```python
+class Singleton:
+    __instance = None
+
+    def __new__(cls, val=None):
+        if Singleton.__instance is None:
+            Singleton.__instance = object.__new__(cls)
+        Singleton.__instance.val = val
+        return Singleton.__instance
+```
+### Borg
+- Allows a class to have as many instances as one likes
+- ensures that they all share the same state
+- Pros
+  - Derivatives of monostate classes can also be monostate
+  - Access to monostate objects does not have to be through pointers or references
+- Cons
+  - No instantiation policy can exist for monostate classes
+  - Monostate instances may be allocated and deallocated many times
+#### uses __init__ method
+- does not return anything
+- only responsible for initializing the instance after it has been created
+```python
+class Borg:
+    __shared_state = {}  # Attribute dictionary
+
+    def __init__(self):
+        self.__dict__ = self._shared_state  # Make it an attribute dictionary
+```
