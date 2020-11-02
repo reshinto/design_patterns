@@ -1,4 +1,8 @@
 # Builder pattern
+- A builder builds anything that requires the culmination of multiple variant steps and processes that result in a finished entity
+- A builder understands the requirement in the easiest of expression and translates that into the outcome, using several complex internal processes
+- Definition by the Gang of Four
+  - A builder separates the construction of a complex object from its representation so that the same construction process can create different representations
 ## Purpose for using it
 * some objects are simple and can be created in a single constructor call
 * other objects require a lot of ceremony to create
@@ -14,6 +18,8 @@
 ## example
 * the following is an example of not creating a html builder
   * resulting in a tedious method of creating a html
+### C#
+- Not using a html builder
 ```c#
 public class Program {
   public static void Main() {
