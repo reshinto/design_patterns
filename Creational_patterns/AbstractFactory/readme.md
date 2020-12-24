@@ -18,6 +18,6 @@
   * Imagine you're creating a "submit" button that will be used on windows and mac operating systems
   * The button is the same object with the same functionality
     * only with a different class (Windows or Mac) depending on the operating system
-![Abstract Factory](../../../images/abstract_factory_eg.png)
+![Abstract Factory](../../images/abstract_factory_eg.png)
 ## Summary
 - makes the factory process easier by offering a generic interface to build a family of related objects
