@@ -5,6 +5,7 @@
   "main": "CurrencyConverter.js",
   "scripts": {
     "dev": "parcel --target=node app.js",
+    "start": "node ./dist/app.js",
     "build": "parcel build --target=node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
