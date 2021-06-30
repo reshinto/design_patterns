@@ -1,4 +1,5 @@
 # Proxy design pattern
+
 - allow us to control access to an object
 - original definition
   - to provide a surrogate or placeholder for another object to control access to it
@@ -11,18 +12,42 @@
   - can apply a proxy-like behavior by 2 ways
     1. directly augmenting an object during access
     2. through composable wrappers
-        - this is better and safer because it does not modify the original object
+       - this is better and safer because it does not modify the original object
+
 ## typically, this pattern is used when
+
 - need to optimize or preprocess data when the consumer accesses it
 - caching remotely access data
 - logging
 - encryption
 - simulating private and inaccessible properties
 - data validation
+
 ## Why use a proxy
+
 - use an extra level of indirection to support distributed, controlled, or conditional access
 - add a wrapper and delegation to protect the real component from undue complexity
+
+## Structure
+
+![Proxy](../../images/proxy.png)
+
+1. The Service Interface declares the interface of the Service.
+
+   - The proxy must follow this interface to be able to disguise itself as a service object.
+
+2. The Service is a class that provides some useful business logic.
+
+3. The Proxy class has a reference field that points to a service object.
+
+   - After the proxy finishes its processing (e.g., lazy initialization, logging, access control, caching, etc.), it passes the request to the service object.
+   - Usually, proxies manage the full lifecycle of their service objects.
+
+4. The Client should work with both services and proxies via the same interface.
+   - This way you can pass a proxy into any code that expects a service object.
+
 ## Summary
+
 - the proxy pattern allows us to create placeholder wrappers for objects
 - a proxy object allows external access control to the object
 - implements the same interface as the original object

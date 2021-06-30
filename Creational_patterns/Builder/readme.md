@@ -1,25 +1,58 @@
 # Builder pattern
+
 - A builder builds anything that requires the culmination of multiple variant steps and processes that result in a finished entity
 - A builder understands the requirement in the easiest of expression and translates that into the outcome, using several complex internal processes
 - Definition by the Gang of Four
   - A builder separates the construction of a complex object from its representation so that the same construction process can create different representations
+
 ## Purpose for using it
-* some objects are simple and can be created in a single constructor call
-* other objects require a lot of ceremony to create
-* having an object with 10 constructor arguments is not productive
-  * eg instead of concatenating multiple strings, use a string builder instead
-* instead, opt for piecewise construction
-  * eg allow people to construct objects piece by piece
-* builder provides an API for constructing an object step by step
+
+- some objects are simple and can be created in a single constructor call
+- other objects require a lot of ceremony to create
+- having an object with 10 constructor arguments is not productive
+  - eg instead of concatenating multiple strings, use a string builder instead
+- instead, opt for piecewise construction
+  - eg allow people to construct objects piece by piece
+- builder provides an API for constructing an object step by step
+
 ### summary: A builder is essentially a separate component, so when piecewise object construction is complicated, provide an API for doing it succinctly
+
+## Structure
+
+![Builder](../../images/builder.png)
+
+1. The Builder interface declares product construction steps that are common to all types of builders.
+
+2. Concrete Builders provide different implementations of the construction steps.
+
+   - Concrete builders may produce products that don’t follow the common interface.
+
+3. Products are resulting objects.
+
+   - Products constructed by different builders don’t have to belong to the same class hierarchy or interface.
+
+4. The Director class defines the order in which to call construction steps, so you can create and reuse specific configurations of products.
+
+5. The Client must associate one of the builder objects with the director.
+   - Usually, it’s done just once, via parameters of the director’s constructor.
+   - Then the director uses that builder object for all further construction.
+   - However, there’s an alternative approach for when the client passes the builder object to the production method of the director.
+   - In this case, you can use a different builder each time you produce something with the director.
+
 ## Why do we need it
-* because sometimes you just want a bit of convenience when building up objects
-  * especially if those objects are complicated
+
+- because sometimes you just want a bit of convenience when building up objects
+  - especially if those objects are complicated
+
 ## example
-* the following is an example of not creating a html builder
-  * resulting in a tedious method of creating a html
+
+- the following is an example of not creating a html builder
+  - resulting in a tedious method of creating a html
+
 ### C#
+
 - Not using a html builder
+
 ```c#
 public class Program {
   public static void Main() {
@@ -45,7 +78,9 @@ public class Program {
   }
 }
 ```
-* Creating a html builder
+
+- Creating a html builder
+
 ```c#
 using System.Collections.Generic;
 
@@ -126,8 +161,10 @@ public class Program {
   }
 }
 ```
-* Fluent builder
-  * enable chaining of methods
+
+- Fluent builder
+  - enable chaining of methods
+
 ```c#
 using System.Collections.Generic;
 
@@ -199,9 +236,12 @@ public class Program {
   }
 }
 ```
+
 ## Fluent Builder inheritance with recursive generics
-* builders inherit from other builders
-  * will be problematic if used fluent interface approach
+
+- builders inherit from other builders
+  - will be problematic if used fluent interface approach
+
 ```c#
 using System;
 using System.Collections.Generic;
@@ -249,8 +289,10 @@ internal class Program
   }
 }
 ```
-  * 1 way to get to get fluent interfaces to inherit is to use recursive generics approach
-    * eg. class Foo : Bar\<Foo\>
+
+- 1 way to get to get fluent interfaces to inherit is to use recursive generics approach
+  - eg. class Foo : Bar\<Foo\>
+
 ```c#
 using System;
 using System.Collections.Generic;
@@ -320,8 +362,11 @@ internal class Program
   }
 }
 ```
+
 ## Functional Builder
-* functional programming style
+
+- functional programming style
+
 ```c#
 using System;
 using System.Collections.Generic;
@@ -378,4 +423,5 @@ class Program
   }
 }
 ```
+
 ## Faceted Builder
