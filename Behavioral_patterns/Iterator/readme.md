@@ -1,5 +1,30 @@
 # Iterator design pattern
 
+- it allows sequential traversal through a complex data structure without exposing its internal details
+
+## Problem
+
+- most collection store their elements in simple list
+  - however some are based on stacks, trees, graphs, and other complex data structures
+- regardless of how a collection is structured, it must provide some way of accessing its elements so that other code can use it
+- sounds like an easy job that can be done just by looping over all the elements
+  - but how do you sequentially traverse elements of a complex data structure (e.g.: tree)
+    - 1 day you might need depth first traversal, another day you might need breadth first traversal, another day you might need something else like random access
+
+## Solution
+
+- extract the traversal behavior of a collection into a separate object called an iterator
+  - the iterator object encapsulates all of the traversal details
+
+## Real world Analogy
+
+- you are lost and wished to arrive at a certain destination
+- solution
+  1.  walk around and try to find the destination, you might waste a lot of time walking in circles, or not find the destination
+  2.  download a navigation app for navigation. smart and inexpensive
+  3.  spend some money and hire a local guide
+- these 3 solutions act as iterators over the vast collections of destinations you wish to go
+
 ## Structure
 
 ![Iterator](../../images/iterator.png)
