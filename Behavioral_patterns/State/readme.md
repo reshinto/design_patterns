@@ -67,7 +67,7 @@
 
 4. Both context and concrete states can set the next state of the context and perform the actual state transition by replacing the state object linked to the context.
 
-## WHen to use
+## When to use
 
 - Use the State pattern when you have an object that behaves differently depending on its current state, the number of states is enormous, and the state-specific code changes frequently
   - The pattern suggests that you extract all state-specific code into a set of distinct classes
